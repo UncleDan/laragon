@@ -282,9 +282,9 @@ date: 20181219
 164 = Comment gérer "%s"
 165 = Comment ajouter Xdebug à Laragon
 166 = WildcardDNS
-167 = Qu'est-ce que c'est ?
+167 = Qu'est-ce que c'est?
 
 # Version 3.5
 920 = Cloner
 921 = Séléctionner un projet à cloner
-922 = Base de données clonée !
+922 = Base de données clonée!

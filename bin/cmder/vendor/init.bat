@@ -81,7 +81,7 @@ if exist "%CMDER_ROOT%\vendor\git-for-windows" (
 if defined GIT_INSTALL_ROOT (
     rem add the unix commands at the end to not shadow windows commands like more
     call :verbose-output Enhancing PATH with unix commands from git in "%GIT_INSTALL_ROOT%\usr\bin"
-    set "PATH=%PATH%;%GIT_INSTALL_ROOT%\bin;%GIT_INSTALL_ROOT%\usr\share\vim\vim74"
+    set "PATH=%PATH%;%GIT_INSTALL_ROOT%\usr\bin;%GIT_INSTALL_ROOT%\usr\share\vim\vim74"
     :: define SVN_SSH so we can use git svn with ssh svn repositories
     if not defined SVN_SSH set "SVN_SSH=%GIT_INSTALL_ROOT:\=\\%\\bin\\ssh.exe"
 )
@@ -151,7 +151,7 @@ call "%user-aliases%"
 if exist "%CMDER_ROOT%\vendor\git-for-windows\post-install.bat" (
     call :verbose-output Running Git for Windows one time Post Install....
     cd /d "%CMDER_ROOT%\vendor\git-for-windows\"
-    "%CMDER_ROOT%\vendor\git-for-windows\git-bash.exe" --no-needs-console --hide --no-cd --command=post-install.bat
+    call "%CMDER_ROOT%\vendor\git-for-windows\git-bash.exe" --no-needs-console --hide --no-cd --command=post-install.bat
 
     cd /d %USERPROFILE%
 )
@@ -186,12 +186,11 @@ if exist "%GIT_INSTALL_ROOT%\post-install.bat" (
 for /f "delims=" %%i in ("%CMDER_ROOT%\..\..\usr") do set USER_DIR=%%~fi
 set USR_DIR=%USER_DIR%
 
-
-
 if exist "%CMDER_ROOT%\..\laragon\laragon.cmd" (
     :: call Laragon own commands
     call "%CMDER_ROOT%\..\laragon\laragon.cmd"
 )
+
 
 if exist "%USER_DIR%\user.cmd" (
     rem create this file and place your own command in there
@@ -202,7 +201,7 @@ if exist "%USER_DIR%\user.cmd" (
     echo :: use this file to run your own startup commands
     echo :: use  in front of the command to prevent printing the command
     echo.
-    echo :: call %%GIT_INSTALL_ROOT%%/cmd/start-ssh-agent.cmd
+    echo :: call start-ssh-agent.cmd
     echo :: set PATH=%%USER_DIR%%\bin\whatever;%%PATH%%
 	echo.
 	echo :: cmd /c start http://localhost 
