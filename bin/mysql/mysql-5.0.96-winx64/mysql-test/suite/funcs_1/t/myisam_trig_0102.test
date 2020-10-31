@@ -1,0 +1,8 @@
+#### suite/funcs_1/t/myisam_trig_0102.test
+
+# MyISAM tables should be used
+#
+# Set $engine_type
+let $engine_type= myisam;
+
+--source suite/funcs_1/triggers/triggers_0102.inc

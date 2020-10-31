@@ -1,0 +1,61 @@
+DROP TABLE IF EXISTS t1;
+CREATE TABLE t1 (
+a INT NOT NULL PRIMARY KEY,
+b INT NOT NULL
+) ENGINE=ndbcluster;
+BEGIN;
+INSERT INTO t1 VALUES (9410,9412);
+BEGIN;
+INSERT INTO t1 VALUES (9411,9412);
+BEGIN;
+INSERT INTO t1 VALUES (9412,9412);
+BEGIN;
+INSERT INTO t1 VALUES (9413,9412);
+BEGIN;
+INSERT INTO t1 VALUES (9414,9412);
+BEGIN;
+INSERT INTO t1 VALUES (9415,9412);
+ROLLBACK;
+ROLLBACK;
+ROLLBACK;
+ROLLBACK;
+ROLLBACK;
+ROLLBACK;
+drop table t1;
+CREATE TABLE t1 (
+a INT NOT NULL PRIMARY KEY,
+b INT NOT NULL,
+c INT NOT NULL
+) ENGINE=ndbcluster;
+select * from t1;
+ERROR HY000: Got error 241 'Invalid schema object version' from ndbcluster
+select * from t1;
+a	b	c
+select * from t1;
+a	b	c
+select * from t1;
+a	b	c
+select * from t1;
+a	b	c
+select * from t1;
+a	b	c
+drop table t1;
+DROP TABLE IF EXISTS truncate_test;
+CREATE TABLE truncate_test (
+i INT PRIMARY KEY,
+a INT,
+b VARCHAR(11),
+UNIQUE KEY (a) 
+) ENGINE = NDB;
+INSERT INTO truncate_test VALUES (1, 1, 'test') ON DUPLICATE KEY UPDATE b = 'new';
+INSERT INTO truncate_test VALUES (1, 1, 'test') ON DUPLICATE KEY UPDATE b = 'new';
+TRUNCATE truncate_test;
+INSERT INTO truncate_test VALUES (1, 1, 'test') ON DUPLICATE KEY UPDATE b = 'new';
+SELECT * FROM truncate_test;
+i	a	b
+1	1	test
+INSERT INTO truncate_test VALUES (1, 1, 'test') ON DUPLICATE KEY UPDATE b = 'new';
+SELECT * FROM truncate_test;
+i	a	b
+1	1	new
+DROP TABLE truncate_test;

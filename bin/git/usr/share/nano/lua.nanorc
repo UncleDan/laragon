@@ -1,12 +1,13 @@
 ## Syntax highlighting for Lua.
-#
-## Original author:  Matthew Wild <mwild1 (at) gmail.com>
-## License: GPL 3 or later
+
+## Original author:  Matthew Wild
+## License:  GPL version 3 or newer
 
 syntax lua "\.lua$"
 magic "Lua script"
-linter "luacheck --no-color"
 comment "--"
+
+linter luacheck --no-color
 
 color brightwhite "\[\[.*\]\]"
 
@@ -44,7 +45,7 @@ color brightmagenta "\<(false|nil|true)\>"
 
 # Decimal and hexadecimal numbers
 color red "\<[0-9]+(\.[0-9]*)?([Ee][+-]?[0-9]+)?\>"
-icolor red "\<0x[0-9a-f]+(\.[0-9a-f]*)?(p[+-]?[0-9]+)?\>"
+color red "\<0x[0-9A-Fa-f]+(\.[0-9A-Fa-f]*)?([Pp][+-]?[0-9]+)?\>"
 
 # Brackets
 color brightmagenta "\(|\)|\[|\]|\{|\}"

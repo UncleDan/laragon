@@ -1,0 +1,8 @@
+#### suite/funcs_1/t/memory_trig_09.test
+
+# Memory tables should be used
+#
+# Set $engine_type
+let $engine_type= memory;
+
+--source suite/funcs_1/triggers/triggers_09.inc

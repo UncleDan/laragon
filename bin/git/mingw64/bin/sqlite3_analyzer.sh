@@ -3,9 +3,11 @@
 exec tclsh "$0" ${1+"$@"}
 package require sqlite3
 
-# Run this TCL script using "testfixture" in order get a report that shows
-# how much disk space is used by a particular data to actually store data
+# Run this TCL script using an SQLite-enabled TCL interpreter to get a report
+# on how much disk space is used by a particular data to actually store data
 # versus how much space is unused.
+#
+# The dbstat virtual table is required.
 #
 
 if {[catch {
@@ -150,6 +152,17 @@ if {[catch {sqlite3 db $file_to_analyze -uri 1} msg]} {
 if {$flags(-debug)} {
   proc dbtrace {txt} {puts $txt; flush stdout;}
   db trace ::dbtrace
+}
+
+# Make sure all required compile-time options are available
+#
+if {![db exists {SELECT 1 FROM pragma_compile_options
+                WHERE compile_options='ENABLE_DBSTAT_VTAB'}]} {
+  puts "The SQLite database engine linked with this application\
+        lacks required capabilities. Recompile using the\
+        -DSQLITE_ENABLE_DBSTAT_VTAB compile-time option to fix\
+        this problem."
+  exit 1
 }
 
 db eval {SELECT count(*) FROM sqlite_master}
@@ -337,7 +350,7 @@ proc titleline {title} {
     puts [string repeat * 79]
   } else {
     set len [string length $title]
-    set stars [string repeat * [expr 79-$len-5]]
+    set stars [string repeat * [expr {79-$len-5}]]
     puts "*** $title $stars"
   }
 }
@@ -347,7 +360,7 @@ proc titleline {title} {
 #
 proc statline {title value {extra {}}} {
   set len [string length $title]
-  set dots [string repeat . [expr 50-$len]]
+  set dots [string repeat . [expr {50-$len}]]
   set len [string length $value]
   set sp2 [string range {          } $len end]
   if {$extra ne ""} {
@@ -373,7 +386,7 @@ proc percent {num denom {of {}}} {
 
 proc divide {num denom} {
   if {$denom==0} {return 0.0}
-  return [format %.2f [expr double($num)/double($denom)]]
+  return [format %.2f [expr {double($num)/double($denom)}]]
 }
 
 # Generate a subreport that covers some subset of the database.
@@ -525,10 +538,10 @@ proc autovacuum_overhead {filePages pageSize} {
   # database file is one pointer-map page, followed by $ptrsPerPage other
   # pages, followed by a pointer-map page etc. The first pointer-map page
   # is the second page of the file overall.
-  set ptrsPerPage [expr double($pageSize/5)]
+  set ptrsPerPage [expr {double($pageSize/5)}]
 
   # Return the number of pointer map pages in the database.
-  return [expr wide(ceil( ($filePages-1.0)/($ptrsPerPage+1.0) ))]
+  return [expr {wide(ceil(($filePages-1.0)/($ptrsPerPage+1.0)))}]
 }
 
 
@@ -569,7 +582,7 @@ set av_pgcnt    [autovacuum_overhead $file_pgcnt $pageSize]
 set av_percent  [percent $av_pgcnt $file_pgcnt]
 
 set sql {SELECT sum(leaf_pages+int_pages+ovfl_pages) FROM space_used}
-set inuse_pgcnt   [expr wide([mem eval $sql])]
+set inuse_pgcnt   [expr {wide([mem eval $sql])}]
 set inuse_percent [percent $inuse_pgcnt $file_pgcnt]
 
 set free_pgcnt    [expr {$file_pgcnt-$inuse_pgcnt-$av_pgcnt}]

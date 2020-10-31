@@ -1,0 +1,150 @@
+source include/master-slave.inc;
+
+# prepare version for substitutions
+let $VERSION=`select version()`;
+
+# stop slave before he will start replication also sync with master
+# for avoiding undetermenistic behaviour
+save_master_pos;
+connection slave;
+sync_with_master;
+stop slave;
+
+connection master;
+# create some events on master
+create table t1(n int not null auto_increment primary key);
+insert into t1 values (1),(2),(3),(4);
+drop table t1;
+create table t2(n int not null auto_increment primary key);
+insert into t2 values (1),(2);
+insert into t2 values (3),(4);
+drop table t2;
+--replace_result $VERSION VERSION
+show binlog events;
+
+# try to replicate all queries until drop of t1
+connection slave;
+start slave until master_log_file='master-bin.000001', master_log_pos=319;
+sleep 2;
+wait_for_slave_to_stop;
+# here table should be still not deleted
+select * from t1;
+--replace_result $MASTER_MYPORT MASTER_MYPORT
+--replace_column 1 # 9 # 11 # 23 # 33 #
+--query_vertical SHOW SLAVE STATUS
+
+# this should fail right after start
+start slave until master_log_file='master-no-such-bin.000001', master_log_pos=291;
+# again this table should be still not deleted
+select * from t1;
+sleep 2;
+wait_for_slave_to_stop;
+--replace_result $MASTER_MYPORT MASTER_MYPORT
+--replace_column 1 # 9 # 11 # 23 # 33 #
+--query_vertical SHOW SLAVE STATUS
+
+# try replicate all until second insert to t2;
+start slave until relay_log_file='slave-relay-bin.000004', relay_log_pos=746;
+sleep 2;
+wait_for_slave_to_stop;
+select * from t2;
+--replace_result $MASTER_MYPORT MASTER_MYPORT
+--replace_column 1 # 9 # 11 # 23 # 33 #
+--query_vertical SHOW SLAVE STATUS
+
+# clean up
+start slave;
+connection master;
+save_master_pos;
+connection slave;
+sync_with_master;
+stop slave;
+
+# this should stop immediately as we are already there
+start slave until master_log_file='master-bin.000001', master_log_pos=776;
+sleep 2;
+wait_for_slave_to_stop;
+# here the sql slave thread should be stopped
+--replace_result $MASTER_MYPORT MASTER_MYPORT bin.000005 bin.000004 bin.000006 bin.000004 bin.000007 bin.000004
+--replace_column 1 # 9 # 23 # 33 #
+--query_vertical SHOW SLAVE STATUS
+
+#testing various error conditions
+--error 1277
+start slave until master_log_file='master-bin', master_log_pos=561;
+--error 1277
+start slave until master_log_file='master-bin.000001', master_log_pos=561, relay_log_pos=12;
+--error 1277
+start slave until master_log_file='master-bin.000001';
+--error 1277
+start slave until relay_log_file='slave-relay-bin.000002';
+--error 1277
+start slave until relay_log_file='slave-relay-bin.000002', master_log_pos=561;
+# Warning should be given for second command
+start slave sql_thread;
+start slave until master_log_file='master-bin.000001', master_log_pos=776;
+
+#
+# bug#47210  first execution of "start slave until" stops too early  
+#
+# testing that a slave rotate event that is caused by stopping the slave
+# does not intervene anymore in UNTIL condition.
+#
+
+connection slave;
+source include/stop_slave.inc;
+--disable_warnings
+drop table if exists t1;
+--enable_warnings
+reset slave;
+--replace_result $MASTER_MYPORT MASTER_PORT
+eval change master to master_host='127.0.0.1',master_port=$MASTER_MYPORT, master_user='root'; 
+
+connection master;
+--disable_warnings
+drop table if exists t1;
+--enable_warnings
+reset master;
+create table t1 (a int primary key auto_increment);
+save_master_pos;
+let $master_pos= query_get_value(SHOW MASTER STATUS, Position, 1);
+
+connection slave;
+start slave;
+sync_with_master;
+
+# at this point slave will close the relay log stamping it with its own
+# Rotate log event. This event won't be examined on matter of the master 
+# UNTIL pos anymore.
+source include/stop_slave.inc;
+let $slave_exec_pos= query_get_value(SHOW SLAVE STATUS, Exec_Master_Log_Pos, 1);
+
+--echo master and slave are in sync now
+let $diff_pos= `select $master_pos - $slave_exec_pos`;
+eval select $diff_pos as zero;
+
+connection master;
+insert into t1 set a=null;
+let $until_pos= query_get_value(SHOW MASTER STATUS, Position, 1);
+insert into t1 set a=null;
+select count(*) as two from t1;
+
+connection slave;
+--replace_result $until_pos UNTIL_POS;
+eval start slave until master_log_file='master-bin.000001', master_log_pos= $until_pos;
+source include/wait_for_slave_sql_to_stop.inc;
+let $slave_exec_pos= query_get_value(SHOW SLAVE STATUS, Exec_Master_Log_Pos, 1);
+--echo slave stopped at the prescribed position
+let $diff_pos= `select $until_pos - $slave_exec_pos`;
+eval select $diff_pos as zero;
+select count(*) as one from t1;
+
+
+connection master;
+drop table t1;
+
+connection slave;
+start slave;
+sync_with_master;
+
+# End of tests

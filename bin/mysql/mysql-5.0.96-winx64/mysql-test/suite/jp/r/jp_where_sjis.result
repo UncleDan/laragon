@@ -1,0 +1,106 @@
+drop table if exists `‚s‚P`;
+drop table if exists `‚s‚Q`;
+drop table if exists `‚s‚R`;
+drop table if exists `‚s‚S`;
+drop table if exists `‚s‚T`;
+drop table if exists `‚s‚U`;
+drop table if exists `‚s‚V`;
+drop table if exists `‚s‚W`;
+drop table if exists `‚s‚X`;
+drop table if exists `‚s‚P‚O`;
+drop table if exists `‚s‚P‚P`;
+drop table if exists `‚s‚P‚Q`;
+SET NAMES sjis;
+SET character_set_database = sjis;
+CREATE TABLE `‚s‚P` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = innodb;
+CREATE TABLE `‚s‚Q` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = innodb;
+CREATE TABLE `‚s‚R` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = innodb;
+CREATE TABLE `‚s‚S` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = myisam;
+CREATE TABLE `‚s‚T` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = myisam;
+CREATE TABLE `‚s‚U` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = myisam;
+CREATE TABLE `‚s‚V` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = heap;
+CREATE TABLE `‚s‚W` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = heap;
+CREATE TABLE `‚s‚X` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = heap;
+CREATE TABLE `‚s‚P‚O` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = bdb;
+CREATE TABLE `‚s‚P‚P` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = bdb;
+CREATE TABLE `‚s‚P‚Q` (`‚b‚P` char(20), INDEX(`‚b‚P`)) DEFAULT CHARSET = sjis engine = bdb;
+SELECT * FROM `‚s‚P` WHERE `‚b‚P` = '°±²³´µ¶·¸¹º»¼½¾¿';
+‚b‚P
+°±²³´µ¶·¸¹º»¼½¾¿
+SELECT * FROM `‚s‚Q` WHERE `‚b‚P` = 'E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±';
+‚b‚P
+E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±
+SELECT * FROM `‚s‚R` WHERE `‚b‚P` = 'ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\';
+‚b‚P
+ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\
+SELECT * FROM `‚s‚S` WHERE `‚b‚P` = '°±²³´µ¶·¸¹º»¼½¾¿';
+‚b‚P
+°±²³´µ¶·¸¹º»¼½¾¿
+SELECT * FROM `‚s‚T` WHERE `‚b‚P` = 'E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±';
+‚b‚P
+E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±
+SELECT * FROM `‚s‚U` WHERE `‚b‚P` = 'ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\';
+‚b‚P
+ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\
+SELECT * FROM `‚s‚V` WHERE `‚b‚P` = '°±²³´µ¶·¸¹º»¼½¾¿';
+‚b‚P
+°±²³´µ¶·¸¹º»¼½¾¿
+SELECT * FROM `‚s‚W` WHERE `‚b‚P` = 'E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±';
+‚b‚P
+E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±
+SELECT * FROM `‚s‚X` WHERE `‚b‚P` = 'ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\';
+‚b‚P
+ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\
+SELECT * FROM `‚s‚P‚O` WHERE `‚b‚P` = '°±²³´µ¶·¸¹º»¼½¾¿';
+‚b‚P
+°±²³´µ¶·¸¹º»¼½¾¿
+SELECT * FROM `‚s‚P‚P` WHERE `‚b‚P` = 'E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±';
+‚b‚P
+E‚Ÿ‚ ‚¡‚¢‚£‚¤‚¥‚¦‚§‚¨‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±
+SELECT * FROM `‚s‚P‚Q` WHERE `‚b‚P` = 'ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\';
+‚b‚P
+ƒ\\•\—\\‰\Ž\\“\”\–\˜\‘\’\™\š\›\œ\\ž\
+CREATE TABLE t1(c1 char(1)) default charset = sjis engine=innodb;
+CREATE TABLE t2(c1 char(1)) default charset = sjis engine=myisam;
+CREATE TABLE t3(c1 char(1)) default charset = sjis engine=heap;
+CREATE TABLE t4(c1 char(1)) default charset = sjis engine=bdb;
+INSERT INTO t1 VALUES('“S'),('“s');
+INSERT INTO t2 VALUES('“S'),('“s');
+INSERT INTO t3 VALUES('“S'),('“s');
+INSERT INTO t4 VALUES('“S'),('“s');
+SELECT * FROM t1 WHERE c1 = '“S';
+c1
+“S
+SELECT * FROM t2 WHERE c1 = '“S';
+c1
+“S
+SELECT * FROM t3 WHERE c1 = '“S';
+c1
+“S
+SELECT * FROM t4 WHERE c1 = '“S';
+c1
+“S
+SELECT * FROM t1 WHERE c1 = '“s';
+c1
+“s
+SELECT * FROM t2 WHERE c1 = '“s';
+c1
+“s
+SELECT * FROM t3 WHERE c1 = '“s';
+c1
+“s
+SELECT * FROM t4 WHERE c1 = '“s';
+c1
+“s
+DROP TABLE `‚s‚P`;
+DROP TABLE `‚s‚Q`;
+DROP TABLE `‚s‚R`;
+DROP TABLE `‚s‚S`;
+DROP TABLE `‚s‚T`;
+DROP TABLE `‚s‚U`;
+DROP TABLE `‚s‚V`;
+DROP TABLE `‚s‚W`;
+DROP TABLE `‚s‚X`;
+DROP TABLE `‚s‚P‚O`;
+DROP TABLE `‚s‚P‚P`;
+DROP TABLE `‚s‚P‚Q`;

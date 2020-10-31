@@ -1,21 +1,40 @@
-Notepad++ 7.4.2 new featurs/enhancements & bug-fixes:
+Notepad++ v7.9 Enhancements & bug-fixes:
 
-1.  Add SWIFT language support.
-2.  Fix replace in files regression.
-3.  Enhance Find Replace dialog (resizable & remove search direction radio buttons).
-4.  Fix a crash issue while doing a column insertion on a CJK unicode document.
-5.  Fix repeated notification dialog for modification from outside of Notepad++.
-6.  Fix a visual glitchy during tab drag and drop.
-
+1.  Add the ability to open the target file of a Shortcut (*.lnk).
+2.  Enhance side panels behaviour: close a single panel instead of the entire stack.
+3.  Fix Monitoring & document auto-update not scrolling to the end of the file with Word wrap enabled issue.
+4.  Fix mouse cursor flicker while hovering URLs.
+5.  Add back hovered blue underlined URLs.
+6.  Enhance C++, Perl, Python parsers and add VHDL in Function List. 
+7.  Improve some ambiguous commands naming in Shortcut Mapper.
+8.  Add an option to prevent right click from canceling selection.
+9.  Add ability to sort lines randomly.
+10. Fix "Close All BUT this" looses current document data issue.
+11. Allow user to start making a stream selection and then change to column block (by pressing ALT key).
+12. Add word wrap option to find results context menu.
+13. Add keyboard navigation ability to Column Editor.
+14. Add keyboard shortcut ability to Projects, Folder as Workspace and Function List for switching among these panels.
+15. Enable project panels toggle from menu.
+16. Enhance Folder as Workspace to restore latest selected item of last session on Notepad++ startup.
+17. Fix inaccurate line margin update with word wrap enabled.
+18. Fix Find previous/next commands not scroll vertically to show match result issue (with word wrap disabled).
+19. Fix column key sort with col block starting in col1 bug.
+20. Add confirmation preference for Replace All in All Opened Documents operation.
+21. Add Escape keypress in functionlist searchbox to clear its text.
+22. Add RTL capability to localized messageboxes.
+23. Make (Find) dlgAlwaysVisible a true Preference setting.
+24. Fix sorting by column key using incorrect key values.
+25. Add search scope to Find window status bar output.
+26. Fix false hit result in Find in Finder.
+27. Prevent redundant line data copy in Finder.
 
 Included plugins:
 
-1.  NppExport v0.2.8 (32-bit x86 only)
-2.  Plugin Manager 1.3.5 (32-bit x86 only)
-3.  Converter 4.2.1
-4.  Mime Tool 2.1
+1.  NppExport v0.2.9
+2.  Converter 4.2.1
+3.  Mime Tool 2.5
 
 
 Updater (Installer only):
 
-* WinGup v4.1
+* WinGup (for Notepad++) v5.1.1

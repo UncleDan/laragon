@@ -1,0 +1,2 @@
+perl mysql-test-run.pl --timer --force --vardir=var-n_stm --comment=n_stm
+perl mysql-test-run.pl --timer --force --vardir=var-ps_stm --comment=ps_stm --ps-protocol

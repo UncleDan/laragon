@@ -1,0 +1,133 @@
+------------------------------------------------------------
+revno: 2937
+committer: Joerg Bruehe <joerg.bruehe@oracle.com>
+branch nick: clone-5.0
+timestamp: Fri 2012-03-02 13:12:07 +0100
+message:
+  Further upgrade the yaSSL library to version 2.2.0
+  to pick up some new security fixes that are in it.
+  
+  Patch provided by Georgi Kodinov.
+------------------------------------------------------------
+revno: 2936
+committer: Joerg Bruehe <joerg.bruehe@oracle.com>
+branch nick: clone-5.0
+timestamp: Tue 2012-02-28 12:42:02 +0100
+message:
+  The current year is 2012, and nobody noticed ...
+  Update the year in the copyright notice, file "README".
+------------------------------------------------------------
+revno: 2935 [merge]
+tags: clone-5.0.96-build
+committer: Georgi Kodinov <Georgi.Kodinov@Oracle.com>
+branch nick: merge-5.0-security
+timestamp: Fri 2012-02-17 11:51:14 +0200
+message:
+  merged mysql-5.0->mysql-5.0-security
+    ------------------------------------------------------------
+    revno: 2901.1.10
+    committer: MySQL Build Team<mysql-build@oss.oracle.com>
+    branch nick: mysql-5.0
+    timestamp: Wed 2012-02-15 17:13:47 +0100
+    message:
+      Updated/added copyright headers
+------------------------------------------------------------
+revno: 2934
+committer: Georgi Kodinov <Georgi.Kodinov@Oracle.com>
+branch nick: B13706828-5.0-security
+timestamp: Fri 2012-02-10 16:33:27 +0200
+message:
+  Bug #13706828: UPGRADE YASSL FROM 1.7.2 TO 2.1.4
+  
+  $SUBJ$
+  1. Took a diff between the previous base version and the
+  mysql sources.
+  2. Added the new 2.1.4 base version.
+  3. Reviewed and re-applied the diff from step #1.
+------------------------------------------------------------
+revno: 2933
+committer: Georgi Kodinov <Georgi.Kodinov@Oracle.com>
+branch nick: upgrade-yassl-5.0-security
+timestamp: Fri 2012-02-10 11:10:07 +0200
+message:
+  Bug#13706621 :  UNIFY THE YASSL VERSIONS THAT WE USE BY BACKPORTING 5.1 
+  AND 5.5 YASSL FIXES.
+  
+  Took the 5.5 yassl code and applied it to the 5.0 codebase, keeping the
+  compilation files.
+------------------------------------------------------------
+revno: 2932 [merge]
+committer: Georgi Kodinov <Georgi.Kodinov@Oracle.com>
+branch nick: merge-5.0-security
+timestamp: Mon 2012-02-06 18:23:41 +0200
+message:
+  merged mysql-5.0->mysql-5.0-security
+    ------------------------------------------------------------
+    revno: 2901.1.9
+    committer: Ramil Kalimullin <ramil@mysql.com>
+    branch nick: mysql-5.0
+    timestamp: Mon 2012-01-30 22:52:33 +0400
+    message:
+      Fix for BUG#13596377: MYSQL CRASHES ON STARTUP ON FREEBSD IN PB2
+      
+      Fix for #36428/#38364 backported into 5.0.
+------------------------------------------------------------
+revno: 2931 [merge]
+committer: Georgi Kodinov <Georgi.Kodinov@Oracle.com>
+branch nick: merge-5.0-security
+timestamp: Thu 2012-01-12 16:39:44 +0200
+message:
+  empty weave merge from mysql-5.0
+    ------------------------------------------------------------
+    revno: 2901.1.8 [merge]
+    committer: Bjorn Munch <bjorn.munch@oracle.com>
+    branch nick: mysql-5.0
+    timestamp: Wed 2012-01-11 10:10:34 +0100
+    message:
+      Merge from mysql-5.0.95-release
+------------------------------------------------------------
+revno: 2930 [merge]
+committer: Joerg Bruehe <joerg.bruehe@oracle.com>
+branch nick: security-5.0
+timestamp: Fri 2011-12-16 12:51:47 +0100
+message:
+  Empty merge of identical version number changes.
+    ------------------------------------------------------------
+    revno: 2901.1.7
+    committer: Joerg Bruehe <joerg.bruehe@oracle.com>
+    branch nick: mysql-5.0
+    timestamp: Fri 2011-12-16 12:33:54 +0100
+    message:
+      Raise version number after cloning 
+------------------------------------------------------------
+revno: 2929
+author: joerg.bruehe@oracle.com
+committer: Build Team <MYSQL-RE_WW@oracle.com>
+branch nick: mysql-5.0-security
+timestamp: Fri 2011-12-16 12:22:47 +0100
+message:
+  Raise version number after cloning 5.0.95
+------------------------------------------------------------
+revno: 2928 [merge]
+tags: mysql-5.0.95, clone-5.0.95-build
+committer: Mattias Jonsson <mattias.jonsson@oracle.com>
+branch nick: topush-5.0-sec
+timestamp: Wed 2011-12-14 14:05:22 +0100
+message:
+  merge
+    ------------------------------------------------------------
+    revno: 2923.1.1
+    committer: Mattias Jonsson <mattias.jonsson@oracle.com>
+    branch nick: b12361113-50-sec
+    timestamp: Mon 2011-12-12 14:07:02 +0100
+    message:
+      Bug#12361113: CRASH WHEN "LOAD INDEX INTO CACHE" WITH TOO
+      SMALL KEY CACHE
+      
+      The server crashed on division by zero because the key cache was not
+      initialized and the block length was 0 which was used in a division.
+      
+      The fix was to not allow CACHE INDEX if the key cache was not initiallized.
+      Thus never try LOAD INDEX INTO CACHE for an uninitialized key cache.
+      
+      Also added some windows files/directories to .bzrignore.

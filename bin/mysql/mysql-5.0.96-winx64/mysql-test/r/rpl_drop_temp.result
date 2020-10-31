@@ -1,0 +1,34 @@
+stop slave;
+drop table if exists t1,t2,t3,t4,t5,t6,t7,t8,t9;
+reset master;
+reset slave;
+drop table if exists t1,t2,t3,t4,t5,t6,t7,t8,t9;
+start slave;
+create database if not exists mysqltest;
+use mysqltest;
+create temporary table mysqltest.t1 (n int);
+create temporary table mysqltest.t2 (n int);
+select get_lock("con_temp",10);
+get_lock("con_temp",10)
+1
+select get_lock("con_temp",10);
+get_lock("con_temp",10)
+1
+show status like 'Slave_open_temp_tables';
+Variable_name	Value
+Slave_open_temp_tables	0
+drop database mysqltest;
+DROP TEMPORARY TABLE IF EXISTS tmp1;
+Warnings:
+Note	1051	Unknown table 'tmp1'
+CREATE TEMPORARY TABLE t1 ( a int );
+DROP TEMPORARY TABLE t1, t2;
+ERROR 42S02: Unknown table 't2'
+DROP TEMPORARY TABLE tmp2;
+ERROR 42S02: Unknown table 'tmp2'
+stop slave;
+**** On Master ****
+CREATE TEMPORARY TABLE tmp3 (a int);
+DROP TEMPORARY TABLE tmp3;
+SET GLOBAL SQL_SLAVE_SKIP_COUNTER=1;
+START SLAVE;

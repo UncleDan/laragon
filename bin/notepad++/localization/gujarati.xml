@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-	::Gujarati language file for Notepad++ ::
-
-	** created By:- Milind Audichya **
-		Email- milindaudichya@programmer.net
-
--->
 <NotepadPlus>
     <Native-Langue name="ગુજરાતી" filename="gujarati.xml" >
         <Menu>
@@ -259,8 +252,8 @@
                     <Item id="10004" name="નવા ઇન્સ્ટન્સ માં ખોલો"/>
 
                     <Item id="46001" name="સ્ટાઈલ કોન્ફીગ્યુરેટર..."/>
-					<Item id="46150" name="તમારી ભાષા વ્યાખ્યાયિત કરો..."/>
-                    <Item id="46080" name="વપરાશકર્તા વ્યાખ્યાયિત(User Defined)"/>
+					<Item id="46250" name="તમારી ભાષા વ્યાખ્યાયિત કરો..."/>
+                    <Item id="46180" name="વપરાશકર્તા વ્યાખ્યાયિત(User Defined)"/>
                     <Item id="47000" name="Notepad++ વિષે..."/>
                     <Item id="47001" name="Notepad++ હોમ"/>
                     <Item id="47002" name="Notepad++ પ્રોજેક્ટ પેજ"/>
@@ -732,6 +725,7 @@
                 </Backup>
 
                 <AutoCompletion title="Auto-Completion">
+                    <Item id="6115" name="ઓટો-ઇન્ડેન્ટ"/>
                     <Item id="6807" name="ઓટો -કમ્પ્લીશન(Auto-Completion)"/>
                     <Item id="6808" name="દરેક ઈનપુટ માટે ઓટો-કમ્પ્લીશન સક્રિય કરો"/>
                     <Item id="6809" name="ફંક્શન કમ્પ્લીશન"/>
@@ -787,7 +781,6 @@
                     <Item id="6333" name="સ્માર્ટ હાઇલાઇતિન્ગ"/>
 					<Item id="6334" name="ઓટો-ડીટેક્ટ કેરેક્ટર એનકોડીંગ"/>
                     <Item id="6114" name="સક્રિય કરો"/>
-                    <Item id="6115" name="ઓટો-ઇન્ડેન્ટ"/>
                     <Item id="6117" name="એમઆરયુ( MRU)	બિહેવિયર સક્રિય કરો"/>
                 </MISC>
             </Preference>
@@ -829,7 +822,7 @@
             <CannotMoveDoc title="Move to new Notepad++ Instance" message="Document is modified, save it then try again."/>
             <DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Notepad++?"/>
             <FileLockedWarning title="Save failed" message="Please check whether if this file is opened in another program"/>
-            <FileAlreadyOpenedInNpp title="" message="The file is already opened in the Notepad++."/>
+            <FileAlreadyOpenedInNpp title="" message="The file is already opened in Notepad++."/>
             <DeleteFileFailed title="Delete File" message="Delete File failed"/>
 
             <!-- $INT_REPLACE$ is a place holder, don't translate it -->
