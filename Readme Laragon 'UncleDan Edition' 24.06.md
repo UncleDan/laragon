@@ -22,7 +22,8 @@
 * ngrok ( https://ngrok.com/download ) ==> ngrok-v3-stable-windows-amd64.zip
 * nodejs ( https://nodejs.org/en/download/prebuilt-binaries ) ==> node-v20.14.0-win-x64.zip _renamed "node-v20.14.0"_
 * notepad++ ( https://notepad-plus-plus.org/downloads/ ) ==> npp.8.6.8.portable.x64.7z
-* php ( https://windows.php.net/download/ ) ==> php-8.3.8-Win32-vs16-x64.zip
+* php ( https://windows.php.net/download/ ) ==> php-8.3.8-Win32-vs16-x64.zip _with php_zip and  php_imagick (works in progress!)_
+* php ( https://windows.php.net/downloads/releases/archives/ ) ==> php-7.4.9-Win32-vc15-x64.zip _with php_zip and  php_imagick (works in progress!)_
 * python ( https://www.python.org/downloads/windows/ ) ==> python-3.12.3-amd64.exe _installed to bin\python\pithon-3.12.3_
 * redis ==> _no update needed/available_
 * sendmail ==> _no update needed/available_
