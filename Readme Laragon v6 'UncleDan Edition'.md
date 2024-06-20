@@ -11,7 +11,7 @@
 ## Updated/Installed packages
 
 * apache ( https://www.apachelounge.com/download/ ) ==> httpd-2.4.59-240605-win64-VS17.zip
-* cmder ( https://github.com/cmderdev/cmder/releases/ ) ==> cmder_mini.zip Version 1.3.25.328
+* cmder ( https://github.com/cmderdev/cmder/releases/ ) ==> cmder_mini.zip Version 1.3.25.328 _with Clink v1.6.16_
 * composer ( https://getcomposer.org/download/ ) ==> command line install
 * cronical ==> _no update needed/available_
 * git ( https://www.git-scm.com/download/win ) ==> PortableGit-2.45.2-64-bit.7z.exe

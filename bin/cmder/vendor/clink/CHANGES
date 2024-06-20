@@ -2,6 +2,25 @@
 
 ### Releases from [chrisant996/clink](https://github.com/chrisant996/clink) fork
 
+#### v1.6.16
+
+- Added a workaround for how [scoop](https://scoop.sh/) tries to control app versions and updates ([#615](https://github.com/chrisant996/clink/issues/615); scoop causes `clink autorun install` to use a wrong path).
+- Added an `auto` mode for the `match.translate_slashes` setting.  This mode makes completion translate all slashes in the completed word to match whichever kind occurs first in the word, or to the system path separator if there are no slashes yet (e.g. when completing a directory name).
+- Changed the default to `auto` for the `match.translate_slashes` setting.
+- Updated the `clink.slash_translation()` function.
+- UNC share name completion works with forward slashes now (e.g. `//localhost/`).
+- Added a `clink-toggle-slashes` bindable command, bound by default to <kbd>Ctrl</kbd>-<kbd>/</kbd>.  The command toggles between forward and backslashes in the word at the cursor point, or in the <em>N</em>th word if a numeric argument is provided (e.g. by the <kbd>Alt</kbd>-Digit keys).
+- Fixed the `off` mode for the `matches.translate_slashes` setting (regression introduced in v1.1.23).
+- Fixed input line coloring of `@` in `for %a in (*) do @whatever`.
+- Fixed crash in `glob-list-expansions` when used on an empty word (regression introduced in v1.3.36).
+- Fixed wildcard completions when `match.wild` is on and `match.substring` is off.
+- Fixed obscure edge case where match filtering with wildcards could potentially yield inaccurate results immediately after an auto-suggestion was offered.
+
+#### v1.6.15
+
+- Fixed hiding internal script names in the `clink-diagnostics` output (regression introduced in v1.6.11).
+- Fixed [#613](https://github.com/chrisant996/clink/issues/613); wrong input line coloring for `cmd /c "command line"`.
+
 #### v1.6.14
 
 - Fixed `menu-complete` to respect `completion-auto-query-items`.

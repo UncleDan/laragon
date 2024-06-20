@@ -1,0 +1,47 @@
+1030 app_context::start_logger  476 ---- 2024/06/20 15:50:04.570 -------------------------------------------------
+1030 app_context::start_logger  479 Host process is 'cmd.exe' (pid 4144)
+1030 app_context::start_logger  483 DLL path is 'C:\laragon\bin\cmder\vendor\clink'
+1030 app_context::start_logger  498 Windows version 10.0.19045 (x64)
+1030 app_context::start_logger  500 Clink version 1.6.14.93b83f (x64)
+1030 hook_setter::hook_setter  159 >>> Started hook transaction.
+1030 hook_setter::attach_iat   316 Attempting to hook SetEnvironmentVariableW in IAT for module 00007FF7FB430000.
+1030 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+1030 find_iat                  124 Found import at 00007FF7FB463860 (value is 00007FF98B2E4FA0).
+1030 hook_setter::attach_iat   316 Attempting to hook SetEnvironmentStringsW in IAT for module 00007FF7FB430000.
+1030 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+1030 find_iat                  124 Found import at 00007FF7FB463888 (value is 00007FF98B2DE580).
+1030 hook_setter::attach_iat   316 Attempting to hook WriteConsoleW in IAT for module 00007FF7FB430000.
+1030 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-console-l1-1-0.dll'
+1030 find_iat                  124 Found import at 00007FF7FB4634F8 (value is 00007FF98B2C36C0).
+1030 hook_setter::attach_iat   316 Attempting to hook GetEnvironmentVariableW in IAT for module 00007FF7FB430000.
+1030 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+1030 find_iat                  124 Found import at 00007FF7FB463880 (value is 00007FF98B2A3FB0).
+1030 hook_setter::commit       207 <<< Hook transaction committed.
+1030 hook_setter::hook_setter  159 >>> Started hook transaction.
+1030 hook_setter::detach_iat   359 Attempting to unhook 00007FF9007C5200 from GetEnvironmentVariableW in IAT for module 00007FF7FB430000.
+1030 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-processenvironment-l1-1-0.dll'
+1030 find_iat                  124 Found import at 00007FF7FB463880 (value is 00007FF9007C5200).
+1030 hook_setter::commit       207 <<< Hook transaction committed.
+1030 hook_setter::hook_setter  159 >>> Started hook transaction.
+1030 hook_setter::attach_iat   316 Attempting to hook ReadConsoleW in IAT for module 00007FF7FB430000.
+1030 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-console-l1-1-0.dll'
+1030 find_iat                  124 Found import at 00007FF7FB4634E0 (value is 00007FF98B3904F0).
+1030 hook_setter::commit       207 <<< Hook transaction committed.
+1030 hook_setter::hook_setter  159 >>> Started hook transaction.
+1030 hook_setter::attach_iat   316 Attempting to hook SetConsoleTitleW in IAT for module 00007FF7FB430000.
+1030 pe_info::iterate_imports  195 Found import in 'api-ms-win-core-console-l2-2-0.dll'
+1030 find_iat                  124 Found import at 00007FF7FB463558 (value is 00007FF98B2C4EF0).
+1030 hook_setter::commit       207 <<< Hook transaction committed.
+1030 win_screen_buffer::begin  366 Using native terminal support (auto mode found 'ConEmuHk64.dll').
+1030 host_lua::load_scripts    192 Loaded 2 Lua scripts in 107 ms
+1030 @~clink~/app/update.lua   370 Clink updater: too soon to check for updates (1718891207 vs 1718891405).
+1030 extract_ctag              931 read 0 bytes
+1030 extract_ctag              931 read 0 bytes
+1030 history_db::initialise   1321 master bank ctag: |CTAG_1718891405_28189234_4144_0
+1030 history_db::compact      1599 History:  0 active, 0 deleted
+3ce0 @~clink~/app/update.lua   425 Clink updater: latest release is v1.6.16; install type is zip.
+3ce0 @~clink~/app/update.lua   577 Clink updater: update in C:\Users\dlolli\AppData\Local\Temp\clink\updater\v1.6.16.zip is ready to be applied.
+3ce0 @~clink~/app/update.lua   618 Clink updater: expanding C:\Users\dlolli\AppData\Local\Temp\clink\updater\v1.6.16.zip into C:\Users\dlolli\AppData\Local\Temp\clink\updater\v1.6.16.
+3ce0 @~clink~/app/update.lua   666 Clink updater: updated Clink to v1.6.16.
+3ce0 win_screen_buffer::begin  366 Using native terminal support (auto mode found 'ConEmuHk64.dll').
+1030 history_db::compact      1599 History:  0 active, 0 deleted
